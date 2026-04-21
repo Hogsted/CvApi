@@ -1,5 +1,6 @@
 ﻿using CvApi.Data;
 using CvApi.Dtos;
+using CvApi.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -40,8 +41,8 @@ namespace CvApi.Controllers
             {
                 Title = dto.Title,
                 Description = dto.Description,
-                GitHubUrl = dto.GitHubUrl,
-                LiveUrl = dto.LiveUrl
+                GitHubUrl = dto.GitHubUrl ?? "",
+                LiveUrl = dto.LiveUrl ?? ""
             };
 
             _context.Projects.Add(project);
@@ -60,8 +61,8 @@ namespace CvApi.Controllers
 
             project.Title = dto.Title;
             project.Description = dto.Description;
-            project.GitHubUrl = dto.GitHubUrl;
-            project.LiveUrl = dto.LiveUrl;
+            project.GitHubUrl = dto.GitHubUrl ?? "";
+            project.LiveUrl = dto.LiveUrl ?? "";
 
             project.UpdatedAt = DateTime.UtcNow;
 

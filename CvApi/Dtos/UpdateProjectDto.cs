@@ -1,4 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations;
 
 namespace CvApi.Dtos
 {
@@ -12,7 +12,12 @@ namespace CvApi.Dtos
         [StringLength(1000)]
         public string Description { get; set; } = "";
 
-        public string GitHubUrl { get; set; } = "";
-        public string LiveUrl { get; set; } = "";
+        [Url]
+        [StringLength(300)]
+        public string? GitHubUrl { get; set; }
+
+        [Url]
+        [StringLength(300)]
+        public string? LiveUrl { get; set; }
     }
 }
