@@ -42,7 +42,8 @@ namespace CvApi.Controllers
             var skill = new Skill
             {
                 Name = dto.Name,
-                Level = dto.Level
+                Level = dto.Level,
+                IsFeatured = dto.IsFeatured
             };
 
             _context.Skills.Add(skill);
@@ -62,6 +63,7 @@ namespace CvApi.Controllers
 
             skill.Name = dto.Name;
             skill.Level = dto.Level;
+            skill.IsFeatured = dto.IsFeatured;
 
             await _context.SaveChangesAsync();
 

@@ -11,5 +11,6 @@ namespace CvApi.Dtos
         [Required]
         [StringLength(50)]
         public string Level { get; set; } = "";
+        public bool IsFeatured { get; set; } = false;
     }
 }
