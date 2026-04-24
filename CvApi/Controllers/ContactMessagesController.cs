@@ -1,6 +1,7 @@
 using CvApi.Data;
 using CvApi.Dtos;
 using CvApi.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -17,6 +18,7 @@ namespace CvApi.Controllers
             _context = context;
         }
 
+        [Authorize]
         [HttpGet]
         public async Task<ActionResult<IEnumerable<ContactMessage>>> GetMessages()
         {
@@ -40,6 +42,7 @@ namespace CvApi.Controllers
             return StatusCode(201);
         }
 
+        [Authorize]
         [HttpPatch("{id}/read")]
         public async Task<IActionResult> MarkAsRead(int id)
         {
@@ -54,6 +57,7 @@ namespace CvApi.Controllers
             return NoContent();
         }
 
+        [Authorize]
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteMessage(int id)
         {

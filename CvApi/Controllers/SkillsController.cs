@@ -1,6 +1,7 @@
 ﻿using CvApi.Data;
 using CvApi.Dtos;
 using CvApi.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -34,6 +35,7 @@ namespace CvApi.Controllers
             return skill;
         }
 
+        [Authorize]
         [HttpPost]
         public async Task<ActionResult<Skill>> CreateSkill(CreateSkillDto dto)
         {
@@ -49,6 +51,7 @@ namespace CvApi.Controllers
             return CreatedAtAction(nameof(GetSkill), new { id = skill.Id }, skill);
         }
 
+        [Authorize]
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdateSkill(int id, UpdateSkillDto dto)
         {
@@ -65,6 +68,7 @@ namespace CvApi.Controllers
             return NoContent();
         }
 
+        [Authorize]
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteSkill(int id)
         {

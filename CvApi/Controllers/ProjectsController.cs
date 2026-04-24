@@ -1,6 +1,7 @@
 ﻿using CvApi.Data;
 using CvApi.Dtos;
 using CvApi.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -34,6 +35,7 @@ namespace CvApi.Controllers
             return project;
         }
 
+        [Authorize]
         [HttpPost]
         public async Task<ActionResult<Project>> CreateProject(CreateProjectDto dto)
         {
@@ -51,6 +53,7 @@ namespace CvApi.Controllers
             return CreatedAtAction(nameof(GetProject), new { id = project.Id }, project);
         }
 
+        [Authorize]
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdateProject(int id, UpdateProjectDto dto)
         {
@@ -71,6 +74,7 @@ namespace CvApi.Controllers
             return NoContent();
         }
 
+        [Authorize]
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteProject(int id)
         {

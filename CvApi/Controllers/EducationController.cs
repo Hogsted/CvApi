@@ -1,6 +1,7 @@
 using CvApi.Data;
 using CvApi.Dtos;
 using CvApi.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -34,6 +35,7 @@ namespace CvApi.Controllers
             return education;
         }
 
+        [Authorize]
         [HttpPost]
         public async Task<ActionResult<Education>> CreateEducation(CreateEducationDto dto)
         {
@@ -53,6 +55,7 @@ namespace CvApi.Controllers
             return CreatedAtAction(nameof(GetEducation), new { id = education.Id }, education);
         }
 
+        [Authorize]
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdateEducation(int id, UpdateEducationDto dto)
         {
@@ -73,6 +76,7 @@ namespace CvApi.Controllers
             return NoContent();
         }
 
+        [Authorize]
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteEducation(int id)
         {

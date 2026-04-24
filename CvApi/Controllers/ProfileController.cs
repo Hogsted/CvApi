@@ -1,6 +1,7 @@
 using CvApi.Data;
 using CvApi.Dtos;
 using CvApi.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -28,6 +29,7 @@ namespace CvApi.Controllers
             return profile;
         }
 
+        [Authorize]
         [HttpPost]
         public async Task<ActionResult<Profile>> CreateProfile(CreateProfileDto dto)
         {
@@ -50,6 +52,7 @@ namespace CvApi.Controllers
             return CreatedAtAction(nameof(GetProfile), profile);
         }
 
+        [Authorize]
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdateProfile(int id, UpdateProfileDto dto)
         {

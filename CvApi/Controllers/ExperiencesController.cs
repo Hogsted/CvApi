@@ -1,6 +1,7 @@
 ﻿using CvApi.Data;
 using CvApi.Dtos;
 using CvApi.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -34,6 +35,7 @@ namespace CvApi.Controllers
             return experience;
         }
 
+        [Authorize]
         [HttpPost]
         public async Task<ActionResult<Experience>> CreateExperience(CreateExperienceDto dto)
         {
@@ -52,6 +54,7 @@ namespace CvApi.Controllers
             return CreatedAtAction(nameof(GetExperience), new { id = experience.Id }, experience);
         }
 
+        [Authorize]
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdateExperience(int id, UpdateExperienceDto dto)
         {
@@ -71,6 +74,7 @@ namespace CvApi.Controllers
             return NoContent();
         }
 
+        [Authorize]
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteExperience(int id)
         {

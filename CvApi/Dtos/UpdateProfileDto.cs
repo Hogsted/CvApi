@@ -21,11 +21,9 @@ namespace CvApi.Dtos
         [StringLength(200)]
         public string Email { get; set; } = "";
 
-        [Url]
         [StringLength(300)]
         public string? GitHubUrl { get; set; }
 
-        [Url]
         [StringLength(300)]
         public string? LinkedInUrl { get; set; }
     }
