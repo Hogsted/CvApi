@@ -55,7 +55,7 @@ builder.Services.AddCors(options =>
 {
     options.AddPolicy("VueFrontend", policy =>
     {
-        policy.WithOrigins("http://localhost:5173", "http://localhost:3000")
+        policy.WithOrigins("http://localhost:5173", "http://localhost:3000", "https://ghogsted.dk", "https://www.ghogsted.dk")
               .AllowAnyHeader()
               .AllowAnyMethod();
     });
